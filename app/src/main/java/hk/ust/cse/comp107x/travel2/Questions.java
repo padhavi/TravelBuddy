@@ -22,6 +22,8 @@ public class Questions extends AppCompatActivity {
     private TextView txt, userNameTextView;
     private FirebaseAuth auth;
 
+    public static ArrayList<String>  choice=new ArrayList<>();
+
     CheckBox cb,cb1,cb2,cb3;
     ArrayList<String> list ;
     @Override
@@ -46,17 +48,21 @@ public class Questions extends AppCompatActivity {
         CheckBox cb3=(CheckBox)findViewById(R.id.checkBox4);
         txt = (TextView)findViewById(R.id.text);
 
+
         cb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 txt.setText("food");
+
+                choice.add(txt.getText().toString());
             }
         });
 
         cb1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                txt.setText("movies");
+                txt.setText(choice+"movies");
+                choice.add(txt.getText().toString());
             }
         });
 
@@ -64,14 +70,16 @@ public class Questions extends AppCompatActivity {
         cb2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                txt.setText("Art");
+                txt.setText(choice+"Art");
+                choice.add(txt.getText().toString());
             }
         });
 
         cb3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                txt.setText("NightClub");
+                txt.setText(choice+"NightClub");
+                choice.add(txt.getText().toString());
             }
         });
 

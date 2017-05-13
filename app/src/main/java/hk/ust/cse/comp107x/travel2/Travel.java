@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -24,6 +25,12 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -52,6 +59,7 @@ public class Travel extends AppCompatActivity implements OnMapReadyCallback {
     protected LocationManager locationManager;
     protected LocationListener locationListener;
     protected double latitude, longitude;
+    private TextView userchoice;
     ArrayAdapter<String> myAdapter;
 
     // GPSTracker class
@@ -60,21 +68,28 @@ public class Travel extends AppCompatActivity implements OnMapReadyCallback {
     // Near BY ListView
     ListView lv;
 
+    private String txt;
 
     private GoogleMap googleMap;
 
     // ArrayList & array list adapter to set listview
     ArrayList<FoursquareModel> _commentList = new ArrayList<FoursquareModel>();
     NearbyListAdapter _nearByListAdapter;
-
+    private FirebaseAuth auth;
+    private DatabaseReference mDatabase;
+    private String uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_travel);
 
+        userchoice=(TextView)findViewById(R.id.choice);
 
         route = (Button) findViewById(R.id.routetbutton);
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        auth = FirebaseAuth.getInstance();
+        uid = auth.getCurrentUser().getUid();
 
         lv = (ListView) findViewById(R.id.listview);
         gps = new GPSTracker(this);
@@ -128,8 +143,25 @@ public class Travel extends AppCompatActivity implements OnMapReadyCallback {
 
         // start the AsyncTask that makes the call for the venus search.
 
+        mDatabase.child("Choice").addValueEventListener(new ValueEventListener() {
+            @Override
+
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                //  bookName = dataSnapshot.child("bookName").getValue(String.class);
+                txt = dataSnapshot.child("txt").getValue(String.class);
 
 
+                userchoice.append(txt);
+
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                if (auth.getCurrentUser() != null) ;
+                // Log.d(LOG_TAG, "getUser:onCancelled", databaseError.toException());
+            }
+        });
 
 
     }
@@ -158,7 +190,6 @@ public class Travel extends AppCompatActivity implements OnMapReadyCallback {
     public void onMapReady(GoogleMap googleMap) {
 
         this.googleMap = googleMap;
-
 
     }
 

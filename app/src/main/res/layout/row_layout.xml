@@ -25,7 +25,7 @@
 
         <RelativeLayout android:layout_width="match_parent"
             android:layout_marginLeft="10dp"
-            android:layout_height="80dp"
+            android:layout_height="100dp"
             android:gravity="center_vertical"
             android:orientation="vertical"
             android:background="#ffffff">
@@ -88,8 +88,8 @@
 
             <Button
                 android:layout_width="53dp"
-                android:layout_height="30dp"
-                android:text="r"
+                android:layout_height="40dp"
+                android:text="route"
                 android:id="@+id/r"
                 android:layout_above="@+id/tv_address"
                 android:layout_alignStart="@+id/checkBox" />
