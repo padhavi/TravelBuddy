@@ -37,7 +37,7 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".TravelBuddy" />
         <activity android:name=".Travel" />
-        <activity android:name=".check"></activity>
+        <activity android:name=".check" />
     </application>
 
 </manifest>

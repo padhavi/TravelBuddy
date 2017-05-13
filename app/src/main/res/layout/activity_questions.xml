@@ -1,44 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="hk.ust.cse.comp107x.travel2.Questions">
 
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/appbar"
+
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="@dimen/appbar_padding_top"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:layout_height="60dp"
+        android:text="Give your Preferences"
+        android:textSize="20dp"
+        android:id="@+id/textView"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.09"
+        android:layout_marginTop="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:layout_scrollFlags="scroll|enterAlways"
-            app:popupTheme="@style/AppTheme.PopupOverlay">
-
-        </android.support.v7.widget.Toolbar>
-
-    </android.support.design.widget.AppBarLayout>
-
-    <android.support.v4.view.ViewPager
-        android:id="@+id/container"
+    <RelativeLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        android:layout_alignParentStart="true">
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom"
-        android:layout_margin="@dimen/fab_margin"
-        android:src="@android:drawable/ic_dialog_email" />
 
-</android.support.design.widget.CoordinatorLayout>
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:text="Choose places"
+            android:textSize="20dp"
+            android:id="@+id/textView1"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="124dp"/>
+        <EditText
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/name"
+            android:hint="NAME"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="154dp" />
+        <CheckBox
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBox"
+            android:checked="false"
+            android:layout_marginLeft="20dp"
+            android:text="food"
+            android:layout_marginTop="204dp"
+            android:onClick="onCheckboxClicked"
+            android:tag="food"/>
+        <CheckBox
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBox2"
+            android:checked="false"
+            android:layout_marginLeft="20dp"
+            android:text="movies"
+            android:tag="movies"
+            android:onClick="onCheckboxClicked"
+            android:layout_marginTop="234dp"/>
+        <CheckBox
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBox3"
+            android:checked="false"
+            android:layout_marginLeft="20dp"
+            android:text="art"
+            android:tag="art"
+            android:onClick="onCheckboxClicked"
+            android:layout_marginTop="264dp"/>
+        <CheckBox
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBox4"
+            android:checked="false"
+            android:layout_marginLeft="20dp"
+            android:text="night Club"
+            android:tag="nightclub"
+            android:onClick="onCheckboxClicked"
+            android:layout_marginTop="304dp"/>
+        <EditText
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/text"
+            android:hint="your choice"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="354dp" />
+        <Button
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="submit"
+            android:id="@+id/registerbutton"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="40dp" />
+
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>
