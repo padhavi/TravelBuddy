@@ -32,7 +32,7 @@
         <TextView
             android:layout_width="300dp"
             android:layout_height="60dp"
-            android:text="Choose places"
+
             android:textSize="20dp"
             android:id="@+id/textView1"
             android:layout_alignParentTop="true"
