@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
@@ -38,7 +39,7 @@ import java.util.ArrayList;
 
 
 
-public class Travel extends AppCompatActivity {
+public class Travel extends AppCompatActivity implements OnMapReadyCallback {
     Button route;
 
     ArrayList<FoursquareModel> venuesList;
@@ -59,7 +60,7 @@ public class Travel extends AppCompatActivity {
     // Near BY ListView
     ListView lv;
 
-    // Google Map
+
     private GoogleMap googleMap;
 
     // ArrayList & array list adapter to set listview
@@ -70,7 +71,7 @@ public class Travel extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_travel);
 
 
         route = (Button) findViewById(R.id.routetbutton);
@@ -127,7 +128,7 @@ public class Travel extends AppCompatActivity {
 
         // start the AsyncTask that makes the call for the venus search.
 
-        new fourquare().execute();
+
 
 
 
@@ -138,9 +139,11 @@ public class Travel extends AppCompatActivity {
     private void initilizeMap() {
 
         if (googleMap == null) {
-            googleMap = ((MapFragment) getFragmentManager().findFragmentById(
-                    R.id.map)).getMap();
 
+           MapFragment mapFragment=  ((MapFragment) getFragmentManager().findFragmentById(R.id.map));
+            mapFragment.getMapAsync(this);
+            new fourquare().execute();
+            Log.d("padhabi", " before adapter is called" );
             // check if map is created successfully or not
             if (googleMap == null) {
                 Toast.makeText(getApplicationContext(),
@@ -148,6 +151,14 @@ public class Travel extends AppCompatActivity {
                         .show();
             }
         }
+
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+
+        this.googleMap = googleMap;
+
 
     }
 
@@ -178,6 +189,7 @@ public class Travel extends AppCompatActivity {
         }
 
         @Override
+
         protected void onPostExecute(String result) {
 
             if (temp == null) {
@@ -226,7 +238,6 @@ public class Travel extends AppCompatActivity {
                 }
 
 
-
             }
 
 
@@ -237,6 +248,7 @@ public class Travel extends AppCompatActivity {
 
     private void setListener(final Uri gmmIntentUri) {
         route.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
 
