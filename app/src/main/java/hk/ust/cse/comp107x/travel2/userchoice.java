@@ -8,9 +8,9 @@ public class userchoice {
 
 
     //name and address string
-    private String food,name,txt;
-    private String movies;
-    private String art, nightclub;
+    private String name,txt;
+    private String time;
+
     public userchoice() {
       /*Blank default constructor essential for Firebase*/
     }
@@ -22,12 +22,21 @@ public class userchoice {
     public void settxt(String txt) {
         this.txt = txt;
     }
+
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 
 }

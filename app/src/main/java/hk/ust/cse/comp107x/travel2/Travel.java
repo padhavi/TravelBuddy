@@ -59,7 +59,7 @@ public class Travel extends AppCompatActivity implements OnMapReadyCallback {
     protected LocationManager locationManager;
     protected LocationListener locationListener;
     protected double latitude, longitude;
-    private TextView userchoice;
+    private TextView userchoice,time;
     ArrayAdapter<String> myAdapter;
 
     // GPSTracker class
@@ -68,7 +68,7 @@ public class Travel extends AppCompatActivity implements OnMapReadyCallback {
     // Near BY ListView
     ListView lv;
 
-    private String txt;
+    private String txt,time1;
 
     private GoogleMap googleMap;
 
@@ -84,6 +84,7 @@ public class Travel extends AppCompatActivity implements OnMapReadyCallback {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_travel);
 
+        time=(TextView)findViewById(R.id.time);
         userchoice=(TextView)findViewById(R.id.choice);
 
         route = (Button) findViewById(R.id.routetbutton);
@@ -162,6 +163,25 @@ public class Travel extends AppCompatActivity implements OnMapReadyCallback {
                 // Log.d(LOG_TAG, "getUser:onCancelled", databaseError.toException());
             }
         });
+        mDatabase.child("Time").addValueEventListener(new ValueEventListener() {
+            @Override
+
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                //  bookName = dataSnapshot.child("bookName").getValue(String.class);
+                time1 = dataSnapshot.child("txt").getValue(String.class);
+
+
+                time.append(time1);
+
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                if (auth.getCurrentUser() != null) ;
+                // Log.d(LOG_TAG, "getUser:onCancelled", databaseError.toException());
+            }
+        });
 
 
     }
@@ -179,7 +199,7 @@ public class Travel extends AppCompatActivity implements OnMapReadyCallback {
             // check if map is created successfully or not
             if (googleMap == null) {
                 Toast.makeText(getApplicationContext(),
-                        "Sorry! unable to create maps", Toast.LENGTH_SHORT)
+                        "hii, Welcome !", Toast.LENGTH_SHORT)
                         .show();
             }
         }

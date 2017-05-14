@@ -38,6 +38,7 @@
         <activity android:name=".TravelBuddy" />
         <activity android:name=".Travel" />
         <activity android:name=".check" />
+        <activity android:name=".time"></activity>
     </application>
 
 </manifest>

@@ -37,6 +37,14 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/time"
+        android:hint="time"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        />
 
 
     <TextView

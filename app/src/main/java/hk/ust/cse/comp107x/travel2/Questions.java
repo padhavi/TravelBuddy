@@ -103,7 +103,7 @@ public class Questions extends AppCompatActivity {
 
                 mDatabase.child("Choice").setValue(form);
 
-                Intent j = new Intent(Questions.this, Travel.class);
+                Intent j = new Intent(Questions.this, time.class);
                 j.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(j);
 
